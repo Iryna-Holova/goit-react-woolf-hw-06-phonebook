@@ -7,7 +7,7 @@ import Section from 'components/Section/Section';
 import css from './Filter.module.css';
 
 const Filter = () => {
-  const { value } = useSelector(getFilter);
+  const filter = useSelector(getFilter);
   const dispatch = useDispatch();
 
   return (
@@ -21,7 +21,7 @@ const Filter = () => {
         <input
           className={css.input}
           type="text"
-          value={value}
+          value={filter}
           onChange={evt => dispatch(setFilter(evt.target.value))}
           placeholder="Enter your search keyword"
         />

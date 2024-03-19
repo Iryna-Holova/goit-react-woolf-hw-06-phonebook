@@ -7,20 +7,22 @@ import css from './ContactList.module.css';
 
 const ContactList = () => {
   const dispatch = useDispatch();
-  const { contacts } = useSelector(getContacts);
-  const { value } = useSelector(getFilter);
+  const contacts = useSelector(getContacts);
+  const filter = useSelector(getFilter);
 
   const filterContacts = () => {
-    const normalizedFilter = value.toLowerCase();
+    const normalizedFilter = filter.toLowerCase();
     return contacts.filter(({ name }) =>
       name.toLowerCase().includes(normalizedFilter)
     );
   };
 
-  const filteredContacts = value ? filterContacts() : contacts;
+  const filteredContacts = filter ? filterContacts() : contacts;
 
   return (
-    <Section title={value ? `Results: ${filteredContacts.length}` : 'Contacts'}>
+    <Section
+      title={filter ? `Results: ${filteredContacts.length}` : 'Contacts'}
+    >
       <ul className={css.list}>
         {filteredContacts.map(({ id, ...contact }) => (
           <ContactItem

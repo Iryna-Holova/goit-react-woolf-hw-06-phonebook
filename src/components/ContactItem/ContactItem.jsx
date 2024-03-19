@@ -6,7 +6,7 @@ import HighlightSearchResult from 'components/HighlightSearchResult/HighlightSea
 import css from './ContactItem.module.css';
 
 const ContactItem = ({ onContactRemove, name, number }) => {
-  const { value } = useSelector(getFilter);
+  const filter = useSelector(getFilter);
 
   return (
     <li className={css.wrapper}>
@@ -14,7 +14,7 @@ const ContactItem = ({ onContactRemove, name, number }) => {
         <IconContext.Provider value={{ size: '20px', className: css.icon }}>
           <FiUser />
         </IconContext.Provider>
-        {!value ? name : <HighlightSearchResult text={name} />}
+        {!filter ? name : <HighlightSearchResult text={name} />}
       </div>
       <div className={css.item}>
         <IconContext.Provider value={{ size: '20px', className: css.icon }}>

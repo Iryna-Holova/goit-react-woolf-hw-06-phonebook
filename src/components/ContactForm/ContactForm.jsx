@@ -15,7 +15,7 @@ const INITIAL_STATE = {
 const ContactForm = () => {
   const [formData, setFormData] = useState(INITIAL_STATE);
   const dispatch = useDispatch();
-  const { contacts } = useSelector(getContacts);
+  const contacts = useSelector(getContacts);
   const nameInput = useRef(null);
 
   const handleChange = ({ target: { name, value } }) => {
