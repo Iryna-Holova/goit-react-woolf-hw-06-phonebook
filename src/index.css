@@ -2,7 +2,24 @@
 
 html {
   box-sizing: border-box;
+  overflow-x: hidden;
   scroll-behavior: smooth;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin; /* "auto" or "thin" */
+  scrollbar-color: #79a5d3 #d1ddeb;
+}
+html::-webkit-scrollbar {
+  width: 12px;
+}
+
+html::-webkit-scrollbar-track {
+  background-color: #d1ddeb;
+}
+
+html::-webkit-scrollbar-thumb {
+  background-color: #79a5d3;
+  border-radius: 6px;
+  border: 2px solid #d1ddeb;
 }
 
 body {

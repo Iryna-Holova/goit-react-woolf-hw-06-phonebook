@@ -1,20 +1,20 @@
+import { useSelector } from 'react-redux';
 import { IconContext } from 'react-icons';
 import { FiUser, FiPhone, FiX } from 'react-icons/fi';
+import { getFilter } from 'store/selectors';
 import HighlightSearchResult from 'components/HighlightSearchResult/HighlightSearchResult';
 import css from './ContactItem.module.css';
 
-const ContactItem = ({ onContactRemove, filter, name, number }) => {
+const ContactItem = ({ onContactRemove, name, number }) => {
+  const { value } = useSelector(getFilter);
+
   return (
     <li className={css.wrapper}>
       <div className={css.item}>
         <IconContext.Provider value={{ size: '20px', className: css.icon }}>
           <FiUser />
         </IconContext.Provider>
-        {!filter ? (
-          name
-        ) : (
-          <HighlightSearchResult text={name} searchTerm={filter} />
-        )}
+        {!value ? name : <HighlightSearchResult text={name} />}
       </div>
       <div className={css.item}>
         <IconContext.Provider value={{ size: '20px', className: css.icon }}>
